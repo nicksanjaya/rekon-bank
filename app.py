@@ -22,13 +22,15 @@ def rekon(df_sap,df_bank):
 
 #Upload File 
 data_sap = st.file_uploader("Upload Excel Data SAP", type=["xlsx"])
-df_sap = pd.read_excel(data_sap)
-st.write(df_sap)
-
-#Upload
 if data_sap is not None:
     try:
+        df_sap = pd.read_excel(data_sap)
+        st.write(df_sap)
         data_bank = st.file_uploader("Upload Excel Data Bank", type=["xlsx"])
+
+#Upload
+if data_bank is not None:
+    try:
         df_bank = pd.read_excel(data_bank)
         st.write(df_bank)
 
