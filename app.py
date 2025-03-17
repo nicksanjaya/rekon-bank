@@ -37,7 +37,7 @@ if data_sap is not None:
 
     if st.button("Run"):
         try:
-            #rekon(df_sap,df_bank)
+            rekon(df_sap,df_bank)
         except Exception as e:
             st.error(f"Error : {e}")
 
