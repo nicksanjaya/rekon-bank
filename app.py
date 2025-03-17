@@ -38,9 +38,9 @@ if data_bank is not None:
     except Exception as e:
         st.error(f"Error reading the Excel file: {e}")
         
-        if st.button("Run"):
-            try:
-                rekon(df_sap,df_bank)
-            except Exception as e:
-                st.error(f"Error : {e}")
+    if st.button("Run"):
+        try:
+            rekon(df_sap,df_bank)
+        except Exception as e:
+            st.error(f"Error : {e}")
 
