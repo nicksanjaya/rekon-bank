@@ -28,18 +28,18 @@ if data_sap is not None:
         st.write(df_sap)
         data_bank = st.file_uploader("Upload Excel Data Bank", type=["xlsx"])
 
-    #Upload
-    if data_bank is not None:
-        try:
-            df_bank = pd.read_excel(data_bank)
-            st.write(df_bank)
-    
-        except Exception as e:
-            st.error(f"Error reading the Excel file: {e}")
-    
-        if st.button("Run"):
+        #Upload
+        if data_bank is not None:
             try:
-                rekon(df_sap,df_bank)
+                df_bank = pd.read_excel(data_bank)
+                st.write(df_bank)
+        
             except Exception as e:
-                st.error(f"Error : {e}")
+                st.error(f"Error reading the Excel file: {e}")
+        
+            if st.button("Run"):
+                try:
+                    rekon(df_sap,df_bank)
+                except Exception as e:
+                    st.error(f"Error : {e}")
 
