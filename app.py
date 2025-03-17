@@ -21,7 +21,6 @@ def rekon(df_sap,df_bank):
     st.write(rekonsiliasi_tidak_cocok)
 
 #Upload File 
-#st.write(f'<b>Produk {df.Produk[produk]} = {pyo.value(pro[pabrik,produk]):,.0f} pcs</b>', unsafe_allow_html=True)
 data_sap = st.file_uploader("Upload Excel Data SAP", type=["xlsx"])
 df_sap = pd.read_excel(data_sap)
 st.write(df_sap)
@@ -38,7 +37,7 @@ if data_sap is not None:
 
     if st.button("Run"):
         try:
-            rekon(df_sap,df_bank)
+            #rekon(df_sap,df_bank)
         except Exception as e:
             st.error(f"Error : {e}")
 
