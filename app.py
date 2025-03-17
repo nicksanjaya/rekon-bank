@@ -17,8 +17,9 @@ st.write(df_sap)
 #Upload
 if data_sap is not None:
     try:
-        df = pd.read_excel(data_sap)
         data_bank = st.file_uploader("Upload Excel Data Bank", type=["xlsx"])
+        df_bank = pd.read_excel(data_bank)
+        st.write(df_bank)
 
     except Exception as e:
         st.error(f"Error reading the Excel file: {e}")
