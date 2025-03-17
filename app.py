@@ -30,18 +30,17 @@ if data_sap is not None:
     except Exception as e:
         st.error(f"Error reading the Excel file: {e}")
 
-        #Upload
-        if data_bank is not None:
+#Upload
+if data_bank is not None:
+    try:
+        df_bank = pd.read_excel(data_bank)
+        st.write(df_bank)
+    except Exception as e:
+        st.error(f"Error reading the Excel file: {e}")
+        
+        if st.button("Run"):
             try:
-                df_bank = pd.read_excel(data_bank)
-                st.write(df_bank)
-        
+                rekon(df_sap,df_bank)
             except Exception as e:
-                st.error(f"Error reading the Excel file: {e}")
-        
-            if st.button("Run"):
-                try:
-                    rekon(df_sap,df_bank)
-                except Exception as e:
-                    st.error(f"Error : {e}")
+                st.error(f"Error : {e}")
 
