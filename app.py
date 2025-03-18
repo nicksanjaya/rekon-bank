@@ -10,13 +10,13 @@ st.markdown('---'*10)
 
 #Rekon
 def rekon(df_sap,df_bank):
-    rekonsiliasi = pd.merge(df_sap, df_bank, on="Dokumen", suffixes=('_SAP', '_Bank'), how="outer", indicator=True)
+    rekonsiliasi = pd.merge(df_sap, df_bank, on="Doc_Num", suffixes=('_SAP', '_Bank'), how="outer", indicator=True)
     rekonsiliasi['selisih'] = rekonsiliasi['Amount_SAP'] - rekonsiliasi['Amount_Bank']
     rekonsiliasi['_merge'] = rekonsiliasi['_merge'].replace({'left_only': 'SAP_Only', 'right_only': 'Bank_Only'})
     st.write(f"<b>Hasil Rekonsiliasi:<b>", unsafe_allow_html=True)
     st.write(rekonsiliasi)
     rekonsiliasi_tidak_cocok = rekonsiliasi[rekonsiliasi['selisih']!= 0]
-    rekonsiliasi_tidak_cocok = rekonsiliasi_tidak_cocok[['Dokumen', 'Amount_SAP', 'Amount_Bank', 'selisih', '_merge']]
+    rekonsiliasi_tidak_cocok = rekonsiliasi_tidak_cocok[['Doc_Num', 'Amount_SAP', 'Amount_Bank', 'selisih', '_merge']]
     st.write(f"<b>Rekonsiliasi Tidak Cocok:<b>", unsafe_allow_html=True)
     st.write(rekonsiliasi_tidak_cocok)
 
